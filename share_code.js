@@ -45,3 +45,7 @@ exports.getShareCodes = function() {
     }
     return shareCodes
 }
+
+exports.getAllShareCodes = function() {
+    return allShareCodes
+}

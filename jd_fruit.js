@@ -925,7 +925,7 @@ async function getWaterFriendGotAward() {
 }
 //接收成为对方好友的邀请
 async function receiveFriendInvite() {
-    for (let code of sc.getShareCodes()) {
+    for (let code of sc.getAllShareCodes()) {
         if (code === $.farmInfo.farmUserPro.shareCode) {
             console.log('自己不能邀请自己成为好友噢\n')
             continue
