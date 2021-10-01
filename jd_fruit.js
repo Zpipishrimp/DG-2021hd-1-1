@@ -656,8 +656,7 @@ async function masterHelpShare() {
     let salveHelpAddWater = 0;
     let remainTimes = 3; //今日剩余助力次数,默认3次（京东农场每人每天3次助力机会）。
     let helpSuccessPeoples = ''; //成功助力好友
-    console.log(`格式化后的助力码::${JSON.stringify(newShareCodes)}\n`);
-    sc.addShareCode($.farmInfo.farmUserPro.shareCode)
+    //     console.log(`格式化后的助力码::${JSON.stringify(newShareCodes)}\n`);
     for (let code of sc.getShareCodes()) {
         console.log(`开始助力京东账号${$.index} - ${$.nickName || $.UserName}的好友: ${code}`);
         if (!code) continue;
@@ -693,6 +692,7 @@ async function masterHelpShare() {
             console.log(`助力失败::${JSON.stringify($.helpResult)}`);
         }
     }
+    sc.addShareCode($.farmInfo.farmUserPro.shareCode)
     if ($.isLoon() || $.isQuanX() || $.isSurge()) {
         let helpSuccessPeoplesKey = timeFormat() + $.farmInfo.farmUserPro.shareCode;
         if (!$.getdata(helpSuccessPeoplesKey)) {
