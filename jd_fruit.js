@@ -660,10 +660,10 @@ async function masterHelpShare() {
     sc.addShareCode($.farmInfo.farmUserPro.shareCode)
     sc.forEachShareCode(function(code) {
         console.log(`开始助力京东账号${$.index} - ${$.nickName || $.UserName}的好友: ${code}`);
-        if (!code) return;
+        if (!code) return true;
         if (code === $.farmInfo.farmUserPro.shareCode) {
             console.log('不能为自己助力哦，跳过自己的shareCode\n')
-            continue
+            return
         }
         await masterHelp(code);
         if ($.helpResult.code === '0') {
