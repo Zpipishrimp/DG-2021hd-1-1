@@ -1364,6 +1364,7 @@ function requireConfig() {
         // console.log(`$.shareCodesArr::${JSON.stringify($.shareCodesArr)}`)
         // console.log(`jdFruitShareArr账号长度::${$.shareCodesArr.length}`)
         //    console.log(`您提供了${$.shareCodesArr.length}个账号的农场助力码\n`);
+        sc.setDefaultShareCodes(process.env.JD_FRUIT_SHARECODES);
         resolve()
     })
 }

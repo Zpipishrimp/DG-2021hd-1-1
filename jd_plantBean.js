@@ -648,6 +648,7 @@ function requireConfig() {
             if ($.getdata('jd_plantbean_inviter')) $.shareCodesArr = $.getdata('jd_plantbean_inviter').split('\n').filter(item => !!item);
             // console.log(`\nBoxJs设置的${$.name}好友邀请码:${$.getdata('jd_plantbean_inviter') ? $.getdata('jd_plantbean_inviter') : '暂无'}\n`);
         }
+        sc.setDefaultShareCodes(process.env.JD_PLANTBEAN_SHARECODES);
         // console.log(`\n种豆得豆助力码::${JSON.stringify($.shareCodesArr)}`);
         // console.log(`您提供了${$.shareCodesArr.length}个账号的种豆得豆助力码\n`);
         resolve()
