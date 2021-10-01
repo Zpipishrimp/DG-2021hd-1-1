@@ -19,7 +19,7 @@ exports.removeShareCode = function(shareCode) {
     removedShareCodes.push(shareCode)
 }
 
-exports.forEachShareCode = function(func) {
+exports.forEachShareCode = async function(func) {
     for (var shareCode of allShareCodes) {
         if (fullShareCodes.indexOf(shareCode) == -1) {
             if (func(shareCode)) {
