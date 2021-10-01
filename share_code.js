@@ -2,6 +2,9 @@ var allShareCodes = [];
 var removedShareCodes = [];
 
 exports.setDefaultShareCodes = function(str) {
+    if (!str) {
+        return
+    }
     var shareCodes = str.split("@")
     console.log(`您提供了${shareCodes.length}个账号的助力码\n`);
     if (shareCodes && shareCodes.length) {
