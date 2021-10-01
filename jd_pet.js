@@ -559,7 +559,7 @@ function requireConfig() {
         }
         // console.log(`$.shareCodesArr::${JSON.stringify($.shareCodesArr)}`)
         // console.log(`jdPetShareArr账号长度::${$.shareCodesArr.length}`)
-        console.log(`您提供了${$.shareCodesArr.length}个账号的东东萌宠助力码\n`);
+        //    console.log(`您提供了${$.shareCodesArr.length}个账号的东东萌宠助力码\n`);
         resolve()
     })
 }
