@@ -4,13 +4,15 @@ var removedShareCodes = [];
 exports.setDefaultShareCodes = function(shareCodes) {
     if (shareCodes && shareCodes.length) {
         for (var shareCode of shareCodes) {
-            allShareCodes.push(shareCode)
+            if (shareCode && shareCode != "undefined") {
+                allShareCodes.push(shareCode)
+            }
         }
     }
 }
 
 exports.addShareCode = function(shareCode) {
-    if (allShareCodes.indexOf(shareCode) == -1) {
+    if (shareCode && allShareCodes.indexOf(shareCode) == -1) {
         allShareCodes.push(shareCode)
     }
 }

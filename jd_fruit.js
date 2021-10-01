@@ -658,12 +658,12 @@ async function masterHelpShare() {
     let helpSuccessPeoples = ''; //成功助力好友
     console.log(`格式化后的助力码::${JSON.stringify(newShareCodes)}\n`);
     sc.addShareCode($.farmInfo.farmUserPro.shareCode)
-    sc.forEachShareCode(function(code) {
+    for (let code of sc.getShareCodes()) {
         console.log(`开始助力京东账号${$.index} - ${$.nickName || $.UserName}的好友: ${code}`);
-        if (!code) return true;
+        if (!code) continue;
         if (code === $.farmInfo.farmUserPro.shareCode) {
             console.log('不能为自己助力哦，跳过自己的shareCode\n')
-            return
+            continue
         }
         await masterHelp(code);
         if ($.helpResult.code === '0') {
@@ -675,7 +675,6 @@ async function masterHelpShare() {
                 helpSuccessPeoples += ($.helpResult.helpResult.masterUserInfo.nickName || '匿名用户') + ',';
             } else if ($.helpResult.helpResult.code === '8') {
                 console.log(`【助力好友结果】: 助力【${$.helpResult.helpResult.masterUserInfo.nickName}】失败，您今天助力次数已耗尽`);
-                return true
             } else if ($.helpResult.helpResult.code === '9') {
                 console.log(`【助力好友结果】: 之前给【${$.helpResult.helpResult.masterUserInfo.nickName}】助力过了`);
             } else if ($.helpResult.helpResult.code === '10') {
@@ -688,13 +687,12 @@ async function masterHelpShare() {
             remainTimes = $.helpResult.helpResult.remainTimes;
             if ($.helpResult.helpResult.remainTimes === 0) {
                 console.log(`您当前助力次数已耗尽，跳出助力`);
-                return true
+                break
             }
         } else {
             console.log(`助力失败::${JSON.stringify($.helpResult)}`);
         }
-    })
-
+    }
     if ($.isLoon() || $.isQuanX() || $.isSurge()) {
         let helpSuccessPeoplesKey = timeFormat() + $.farmInfo.farmUserPro.shareCode;
         if (!$.getdata(helpSuccessPeoplesKey)) {
