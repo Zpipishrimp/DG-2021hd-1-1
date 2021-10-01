@@ -6,7 +6,7 @@ exports.setDefaultShareCodes = function(str) {
     console.log(`您提供了${shareCodes.length}个账号的助力码\n`);
     if (shareCodes && shareCodes.length) {
         for (var shareCode of shareCodes) {
-            if (shareCode && shareCode != "undefined") {
+            if (shareCode && shareCode != "undefined" && allShareCodes.indexOf(shareCode) == -1) {
                 allShareCodes.push(shareCode)
             }
         }
