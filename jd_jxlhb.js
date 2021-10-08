@@ -38,7 +38,10 @@ if ($.isNode()) {
     ].filter((item) => !!item);
 }
 $.packetIdArr = [];
-$.packetIdArrCopy = []
+$.packetIdArrCopy = [];
+
+$.str = process.env.JX88_SHARECODES
+
 $.activeId = '489177';
 const BASE_URL = 'https://wq.jd.com/cubeactive/steprewardv3'
 
@@ -58,14 +61,19 @@ const BASE_URL = 'https://wq.jd.com/cubeactive/steprewardv3'
     if (res && res.activeId) $.activeId = res.activeId;
     $.authorMyShareIds = [...((res && res.codes) || []), ...res2];
     //开启红包,获取互助码
-    for (let i = 0; i < num; i++) {
-        $.index = i + 1;
-        cookie = cookiesArr[i];
-        $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
-        await TotalBean();
-        console.log(`\n*****开始【京东账号${$.index}】${$.nickName || $.UserName}*****\n`);
-        await main();
+    if (!$.str) {
+        for (let i = 0; i < num; i++) {
+            $.index = i + 1;
+            cookie = cookiesArr[i];
+            $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
+            await TotalBean();
+            console.log(`\n*****开始【京东账号${$.index}】${$.nickName || $.UserName}*****\n`);
+            await main();
+        }
+    } else {
+        $.packetIdArr = $.str.split("@")
     }
+
     ii = 0
     for (let i = cookiesArr.length; i > 0; i--) {
         if ($.packetIdArr.length == 0) {
