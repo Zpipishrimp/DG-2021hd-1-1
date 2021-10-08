@@ -72,6 +72,7 @@ const BASE_URL = 'https://wq.jd.com/cubeactive/steprewardv3'
         }
     } else {
         $.packetIdArr = $.str.split("@")
+        console.log(`您提供了${$.packetIdArr}个账号的助力码\n`);
     }
 
     ii = 0
